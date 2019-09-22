@@ -1,0 +1,65 @@
+{% extends 'dashmain.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h3 class="h3">Coding Ground</h3>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='codemirror.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='night.css') }}">
+<script src="{{ url_for('static', filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static', filename='closetag.js') }}"></script>
+<script src="{{ url_for('static', filename='closebrackets.js') }}"></script>
+
+<script src="{{ url_for('static', filename='javascript.js') }}"></script>
+
+<style type="text/css">
+      .CodeMirror {border-top: 1px solid #888; border-bottom: 1px solid #888;}
+    </style>
+
+<article>
+
+    <form action="" method="GET" onsubmit="download(this['name'].value, this['text'].value)" value='{{ key }}'>
+      <div class="row">
+        <h4>
+            {{ key }}
+        </h4>
+        
+      </div><br>
+      <input type="hidden" name="element" value= {{ key }}>
+    <textarea id="code" name="code">
+{{ code.strip() }}
+    </textarea><br>
+    <!-- <button class="btn btn-primary">Download</button> -->
+</form>
+    
+        <script type="text/javascript">
+          var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            autoCloseBrackets: true,
+            lineNumbers: true,
+            theme: "night"
+          });
+          
+        </script>
+
+
+<!-- </style>
+<script language="Javascript" >
+function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+
+encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+</script> -->
+      </article>
+
+
+{% endblock %}

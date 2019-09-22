@@ -1,0 +1,67 @@
+{% extends "head.html" %}
+
+{% block content %}
+
+
+
+
+      <main role="main">
+
+            <section class="jumbotron text-center">
+              <div class="container">
+                <h1 class="jumbotron-heading">Cook Book</h1>
+                <p class="lead text-muted">Code something beautiful. Share your code, like it save it.</p>
+                <p>
+                  <a href="{{ url_for('coding') }}" class="btn btn-primary my-2">Open Coding Ground</a>
+                  <a href="{{ url_for('dashboard') }}" class="btn btn-secondary my-2">My Projects</a>
+                </p>
+              </div>
+            </section>
+      
+            <div class="album py-5 bg-light">
+              <div class="container">
+      
+                <div class="row">
+                        {% for item in l %}
+                  
+                  <div class="col-md-4">
+                      <form action="" method="POST" style="width:100%; display:flex;">
+                    <div class="card mb-4 box-shadow" style="width:100%;">
+                      <div class="card-header">{{ item[2] }} File</div>
+                      <div class="card-body">
+                        <p class="card-text">{{ item[0] }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <input type="hidden" name="search" value= {{ item[0] }}>
+                            <input type="hidden" name="author" value= {{ item[1] }}>
+                             <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
+                           
+                          </div>
+                          <small class="text-muted">code by {{ item[1] }}</small>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    </form>                    
+                  </div>
+                  
+                  {% endfor %}
+      
+      
+      
+                  
+      
+      
+      
+                </div>
+              </div>
+            </div>
+      
+          </main>
+      
+    
+
+
+
+
+{% endblock %}

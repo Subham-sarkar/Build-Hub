@@ -1,0 +1,46 @@
+{% extends 'dashmain.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+  <h3 class="h3">Coding Ground</h3>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='codemirror.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='night.css') }}">
+<script src="{{ url_for('static', filename='codemirror.js') }}"></script>
+<script src="{{ url_for('static', filename='closetag.js') }}"></script>
+<script src="{{ url_for('static', filename='closebrackets.js') }}"></script>
+
+<script src="{{ url_for('static', filename='javascript.js') }}"></script>
+
+<style type="text/css">
+      .CodeMirror {border-top: 1px solid #888; border-bottom: 1px solid #888;}
+    </style>
+
+<article>
+
+    <form action="" method="POST">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" required placeholder="File Name" name="nameoffile" value= {{ request.form.nameoffile }}>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div><br>
+    <textarea id="code" name="code" value= {{ request.form.code }}>
+    
+    </textarea><br>
+</form>
+    
+        <script type="text/javascript">
+          var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            autoCloseBrackets: true,
+            lineNumbers: true,
+            theme: "night"
+          });
+          
+        </script>
+      </article>
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'dashmain.html' %}
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h3 class="h3">My Projects</h3>
+</div>
+<!-- body of the area -->
+
+
+<div class="row">
+{% for item in l %}
+<div class="col-md-4">
+  <form action="" method="POST">
+<div class="card mb-4 box-shadow" style="width:100%;">
+<div class="card-header">{{ item[2] }} file</div>
+<div class="card-body">
+<p class="card-text">{{ item[0] }}</p>
+<div class="d-flex justify-content-between align-items-center">
+  <div class="btn-group">
+    <input type="hidden" name="search" value= {{ item[0] }}>
+     <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
+   
+  </div>
+  <small class="text-muted">code by {{ item[1] }}</small>
+</div>
+</div>
+</div>
+</form>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}
